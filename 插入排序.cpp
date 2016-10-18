@@ -1,7 +1,7 @@
 // 插入排序.cpp : 定义控制台应用程序的入口点。
 //
 
-#include "stdafx.h"
+#include <stdafx.h>
 #include <iostream> 
 #include <stdlib.h> 
 using namespace std;
@@ -23,10 +23,10 @@ int main()
 		key = A[j];
 		//将A[j]插入排好序的A[1...j-1]
 		i = j - 1;
-		while (i > 0 && A[i] > key)
+		while (i > 0 && A[i] > key)  //比较A[i + 1]与A[i]，这里为升序。
 		{
-			A[i + 1] = A[i];
-			i = i - 1;
+			A[i + 1] = A[i];     //因此将大数置于A[i + 1]
+			i = i - 1;           //目的回溯检测
 		}
 		A[i + 1] = key;
 	}
