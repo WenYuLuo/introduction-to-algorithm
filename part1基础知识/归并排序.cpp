@@ -18,13 +18,13 @@ int main()
 	cin >> m;
 	int *A = new int[m];
 	cout << "生成的随机序列\n";
-	for(i=0;i<m;i++)
+	for(i=0;i<m;i++)                      //生成随机序列
 	{
 		A[i] = rand() % 1000;
 		cout << "   " << A[i] ;
 	}
 	cout << endl;
-	merge(A, 0, m-1);
+	merge(A, 0, m-1);                 //调用归并排序
 	cout << "归并排序结果\n";
 	for(j=0;j<m;j++)
 	{
@@ -37,23 +37,23 @@ int main()
 
 
 
-void merge(int *A, int p, int r)
+void merge(int *A, int p, int r)   //归并排序算法
 {
-	if (p<r)
+	if (p<r)                                      //判断序列长度是否为1，若为1则不再继续分治
 	{
 		int q;
-		q = int((p + r) / 2);
-		merge(A, p, q);
-		merge(A, q + 1, r);
-		merge_sort(A, p, q, r);
+		q = int((p + r) / 2);               //找到序列中点
+		merge(A, p, q);                   //左序列递归分治
+		merge(A, q + 1, r);             //右序列递归分治
+		merge_sort(A, p, q, r);      //归并排序，由最小单位1开始回溯，即自底向上推进
 	}
 }
 
 
 void merge_sort(int *A, int p, int q, int r)
 {
-	int n_1 = q - p + 1;
-	int n_2 = r - q;
+	int n_1 = q - p + 1;                //左序列长度
+	int n_2 = r - q;                       //右序列长度
 	int i, j;
 	int *L = new int[n_1], *R = new int[n_2];//分配子数组长度
 	for (i = 0;i < n_1;i++)
@@ -91,6 +91,6 @@ void merge_sort(int *A, int p, int q, int r)
 			i = i + 1;
 		}
 	}
-	delete[] L;
+	delete[] L;                 //删除预分配动态内存
 	delete[] R;
 }
