@@ -12,7 +12,7 @@ public:
 	void show(); //打印矩阵
 	void delet();//删除给矩阵分配的动态空间
 	void build(int i, int j); //矩阵赋值
-    
+	void creat(int i, int j); //随机生成矩阵
 	//Matrix strassen_multiply(Matrix &rc);
 
 };

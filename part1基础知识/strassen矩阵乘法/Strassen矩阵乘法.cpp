@@ -22,11 +22,11 @@ int main()
 	cin >> size;
 	cout << "创建矩阵A:" << endl;
 	Matrix A;
-	A.build(size, size);
+	A.creat(size, size);
 	A.show();
 	cout << "创建矩阵B:" << endl;
 	Matrix B;
-	B.build(size, size);
+	B.creat(size, size);
 	B.show();
 	Matrix C;
 	C.init(size, size);

@@ -52,6 +52,25 @@ void Matrix::build(int m, int n)  //¾ØÕó¸³Öµ
 	}
 }
 
+void Matrix::creat(int m, int n)
+{
+	row = m;
+	colum = n;
+	P = new int*[row];
+	for (int l = 0;l < row;l++)
+	{
+		P[l] = new int[colum];
+	}
+	int i, j;
+	for (i = 0;i < row;i++)
+	{
+		for (j = 0;j < colum;j++)
+		{
+			P[i][j]=rand()%100;
+		}
+	}
+}
+
 
 
 
