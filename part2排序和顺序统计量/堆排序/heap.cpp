@@ -16,6 +16,11 @@ heap::heap(int * P, int i_length, int i_heap_size)
 	heap_size = i_heap_size;
 }
 
+int heap::heapsize()
+{
+	return heap_size;
+}
+
 
 
 int heap::parent(int i)//需要注意的是A[0]为根节点
@@ -84,9 +89,49 @@ void heap::heapsort()
 
 void heap::show()
 {
-	for (int i = 0;i < length;i++)
+	for (int i = 0;i < heap_size;i++)
 	{
 		cout << "  " << A[i];
 	}
 	cout << endl;
+}
+
+int heap::heap_maximum() //返回队列最大值
+{
+	return A[0];
+}
+
+int heap::heap_extract_max()//提取并返回队列最大值
+{
+	if (heap_size < 0)
+		cout << "error: heap underflow." << endl;
+	int max;
+	max = A[0];
+	A[0] = A[heap_size - 1];
+	heap_size = heap_size - 1; //将最大值交换至队列尾，令heap_size减一，使得队列不在包含该最大值
+	max_heapity(0);              //置换后维护最大堆，保证提取出最大值得堆仍为最大堆
+	return max;
+}
+
+void heap::heap_increase_key(int i, int key)  //队列的第i个元素的键值加至key 
+{
+	i = i - 1; //我们考虑数组从零开始，因此第i个元素在数组中的位置为A[i-1]
+	if (key < A[i])
+		cout << "error: new key is smaller than current key." << endl;
+	A[i] = key;
+	int mid;
+	while(i>0&&A[parent(i)]<A[i])
+	{
+		mid = A[i];
+		A[i] = A[parent(i)];
+		A[parent(i)] = mid;
+		i = parent(i);     //自下向上循环检查最大堆的条件，并更正。
+	}
+}
+
+void heap::max_heap_insert(int key)  //在队列末尾并入一个新的键字
+{
+	heap_size = heap_size + 1;
+	A[heap_size - 1] = -INT16_MAX;
+	heap_increase_key(heap_size, key);
 }

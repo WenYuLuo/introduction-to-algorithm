@@ -11,7 +11,6 @@ int main()
 	int n;
 	cout << "输入序列长度：";
 	cin >> n;
-	cout << endl;
 	int *P = new int[n];
 	for (int i = 0;i < n;i++)
 	{
@@ -24,6 +23,35 @@ int main()
 	heap1.show();
 	heap1.heapsort();
 	cout << "排序结果：";
+	heap1.show();
+	
+	//优先队列
+	heap1.build_max_heap();
+	cout << "基于最大堆优先队列demo：\n" 
+		    <<"队列最大值："<< heap1.heap_maximum() << endl;
+	//去掉最大键字的元素
+	heap1.heap_extract_max();
+	cout << "去掉最大键字的元素后的队列: ";
+	heap1.show();
+	//
+	int key,i;
+	cout << "队列的第i个元素：i = ";
+	cin >> i;
+	if (i > n)
+	{
+		cout << "error: input should be smaller than heap_size = " << heap1.heapsize()
+			<< "\nplease input again: i= ";
+		cin >> i;
+	}
+		cout << "将其的键值加至key = ";
+		cin >> key;
+		heap1.heap_increase_key(i, key);
+		heap1.show();
+	//在末尾并入一个新的键字
+	int key1;
+	cout << "增加新的key = ";
+	cin >> key1;
+	heap1.max_heap_insert(key1);
 	heap1.show();
 	return 0;
 }
