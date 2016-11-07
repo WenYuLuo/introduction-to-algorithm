@@ -1,5 +1,5 @@
 // 快速排序.cpp : 采用了随机版本，本次忽略了序列A【0】的值，也就是在运行过程中不考虑A[0]。定义序列A时直接定义了一个长度为n+1的动态数组
-//
+//correct a mistake of first commit
 
 #include "stdafx.h"
 #include "iostream"
