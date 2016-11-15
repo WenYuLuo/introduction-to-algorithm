@@ -1,22 +1,23 @@
 // 选择算法.cpp : 采用了最坏情况为线性时间的选择算法，基于中位数的快速排序划分。
 //需要注意几点，在new分配动态内存时，由于我们为了表示方便不使用数组a[0]，因此在定义语句应该为内存多加1.
 //如我们为数组A分配n位，则应为 int *A=new int[n+1];
-
+//感觉我这code写的十分繁琐，欢迎朋友能够改进。
 #include "stdafx.h"
 #include "iostream"
 #include "math.h"
 using namespace std;
 //int rand_partition(int *A, int p, int r);
-int partition(int *A, int p, int r,int z);
-int median(int *A,int p, int r);
-int median_mid(int *A, int length,int p,int r);
-int select(int *A, int p, int r, int s);
-int medianmm(int *A, int *mid, int n);
+int partition(int *A, int p, int r,int z);//快速排序划分数组
+int median(int *A,int p, int r);//中位数,返回在数组的位置
+int median_mid(int *A, int length,int p,int r);//求中位数的中位数的主函数。
+                                               //之所以没有用median是因为这里需要利用数组下标作为索引对中位数进行排序，选取中位数的中位数
+int select(int *A, int p, int r, int s);//选择算法
+int medianmm(int *A, int *mid, int n);//求中位数的中位数
 
 int main()
 {
 	int s, length;
-	cout << "最好情况为线性时间的选择算法demo：" << endl;
+	cout << "最坏情况为线性时间的选择算法demo：" << endl;
 	cout << "请输入序列长度：";
 	cin >> length;
 	int *A = new int[length+1];
